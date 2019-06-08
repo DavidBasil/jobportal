@@ -3,7 +3,7 @@
 @section('content')
 	<div class="container">
 		<div class="row">
-
+			{{-- job description and duties --}}
 			<div class="col-md-8">
 				<div class="card">
 					<div class="card-header">{{ $job->title }}</div>
@@ -18,18 +18,22 @@
 					</div>
 				</div>
 			</div>
-
+			{{-- job info details --}}
 			<div class="col-md-4">
 				<div class="card">
 					<div class="card-header">Short Info</div>
 					<div class="card-body">
-						<p>Company:</p>
+						<p>Company: {{ $job->company->cname }}</p>
 						<p>Address: {{ $job->address }}</p>
 						<p>Employment Type: {{ $job->type }}</p>
 						<p>Position: {{ $job->position }}</p>
 						<p>Date: {{ $job->created_at->diffForHumans() }}</p>
 					</div>
 				</div>
+				@if(Auth::check() && Auth::user()->user_type='seeker')
+				{{-- job apply button --}}
+				<button class="btn btn-success btn-block mt-1">Apply</button>
+				@endif
 			</div>
 
 		</div>
