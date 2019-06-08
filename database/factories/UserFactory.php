@@ -26,3 +26,18 @@ $factory->define(User::class, function (Faker $faker) {
         'remember_token' => Str::random(10),
     ];
 });
+
+$factory->define(App\Company::class, function (Faker $faker) {
+    return [
+			'user_id' => App\User:all()->random()->id,
+			'cname' => $name=$fake->company,
+			'slug' => str_slug($name),
+			'address' => $faker->address,
+			'phone' => $faker->phoneNumber,
+			'website' => $faker->domainName,
+			'logo' => 'avatar/logo.jpeg',
+			'cover_photo' => 'cover/cover.jpg',
+			'slogan' => 'Learn and Grow',
+			'description' => $faker->paragraph(rand(2, 10))
+    ];
+});
