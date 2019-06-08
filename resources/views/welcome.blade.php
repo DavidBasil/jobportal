@@ -17,7 +17,7 @@
 					<tr>
 						<td><img src="{{ asset('avatar/logo.jpeg') }}" width="80"></td>
 						<td>Position: Web Developer</td>
-						<td>Address: Melbourne</td>
+						<td><i class="fa fa-map-marker"></i> Address: Melbourne</td>
 						<td>Date: 2019-06-06</td>
 						<td><button class="btn btn-success btn-sm">Apply</button></td>
 					</tr>
