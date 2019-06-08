@@ -30,7 +30,7 @@ $factory->define(User::class, function (Faker $faker) {
 $factory->define(App\Company::class, function (Faker $faker) {
     return [
 			'user_id' => App\User:all()->random()->id,
-			'cname' => $name=$fake->company,
+			'cname' => $name = $faker->company,
 			'slug' => str_slug($name),
 			'address' => $faker->address,
 			'phone' => $faker->phoneNumber,
@@ -39,5 +39,21 @@ $factory->define(App\Company::class, function (Faker $faker) {
 			'cover_photo' => 'cover/cover.jpg',
 			'slogan' => 'Learn and Grow',
 			'description' => $faker->paragraph(rand(2, 10))
+    ];
+});
+
+$factory->define(App\Job::class, function (Faker $faker) {
+    return [
+			'user_id' => App\User:all()->random()->id,
+			'company_id' => App\Company::all()->random()->id,
+			'title' => $title = $faker->text,
+			'slug' => str_slug($title),
+			'position' => $faker->jobTitle,
+			'address' => $faker->address,
+			'category_id' => rand(1, 5),
+			'type' => 'fulltime',
+			'status' => rand(0, 1),
+			'description' => $faker->paragraph(rand(2, 10)),
+			'last_date' => $faker->DateTime
     ];
 });
