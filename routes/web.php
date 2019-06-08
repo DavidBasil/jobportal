@@ -13,6 +13,8 @@
 
 
 Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/', 'JobController@index');
-Route::get('/home', 'HomeController@index')->name('home');
+// {job} is for a slug
+Route::get('/jobs/{id}/{job}', 'JobController@show')->name('jobs.show');
