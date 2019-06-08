@@ -29,7 +29,7 @@ $factory->define(User::class, function (Faker $faker) {
 
 $factory->define(App\Company::class, function (Faker $faker) {
     return [
-			'user_id' => App\User:all()->random()->id,
+			'user_id' => App\User::all()->random()->id,
 			'cname' => $name = $faker->company,
 			'slug' => str_slug($name),
 			'address' => $faker->address,
@@ -44,7 +44,7 @@ $factory->define(App\Company::class, function (Faker $faker) {
 
 $factory->define(App\Job::class, function (Faker $faker) {
     return [
-			'user_id' => App\User:all()->random()->id,
+			'user_id' => App\User::all()->random()->id,
 			'company_id' => App\Company::all()->random()->id,
 			'title' => $title = $faker->text,
 			'slug' => str_slug($title),
