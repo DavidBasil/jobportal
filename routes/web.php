@@ -18,3 +18,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'JobController@index');
 // {job} is for a slug
 Route::get('/jobs/{id}/{job}', 'JobController@show')->name('jobs.show');
+
+Route::get('/company/{id}/{name}', 'CompanyController@show')->('company.show');
