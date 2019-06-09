@@ -48,7 +48,7 @@
 				<div class="card-header">Update Coverletter</div>
 				<div class="card-body">
 					<input type="file" name="cover_letter" class="form-control">
-					<button class="btn btn-success" type="submit">Update</button>
+					<button class="btn btn-success w-100 mt-2" type="submit">Update</button>
 				</div>
 			</div>
 
@@ -56,7 +56,7 @@
 				<div class="card-header">Update Resume</div>
 				<div class="card-body">
 					<input type="file" name="resume" class="form-control">
-					<button class="btn btn-success" type="submit">Update</button>
+					<button class="btn btn-success w-100 mt-2" type="submit">Update</button>
 				</div>
 			</div>
 
