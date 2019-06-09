@@ -80,10 +80,18 @@
 
 			<div class="card mt-2">
 				<div class="card-header">Update Resume</div>
-				<div class="card-body">
-					<input type="file" name="resume" class="form-control">
-					<button class="btn btn-success w-100 mt-2" type="submit">Update</button>
-				</div>
+				<form action="{{ route('resume') }}" method="post" enctype="multipart/form-data">@csrf
+					<div class="card-body">
+						<input type="file" name="resume" class="form-control">
+						<button class="btn btn-success w-100 mt-2" type="submit">Update</button>
+						{{-- message --}}
+						@if(Session::has('resume_message'))
+							<div class="{{ Session::get('class') }} mt-2">
+								{{ Session::get('resume_message') }}
+							</div>
+						@endif
+					</div>
+				</form>
 			</div>
 
 		</div>
