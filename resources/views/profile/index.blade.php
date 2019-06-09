@@ -20,15 +20,15 @@
 	
 						<div class="form-group">
 							<label for="address">Address</label>
-							<input type="text" name="address" class="form-control">
+							<input type="text" name="address" class="form-control" value="{{ Auth::user()->profile->address }}">
 						</div>
 						<div class="form-group">
 							<label for="experience">Experience</label>
-							<textarea name="experience" class="form-control"></textarea>
+							<textarea name="experience" class="form-control">{{ Auth::user()->profile->experience }}</textarea>
 						</div>
 						<div class="form-group">
 							<label for="bio">Bio</label>
-							<textarea name="bio" class="form-control"></textarea>
+							<textarea name="bio" class="form-control">{{ Auth::user()->profile->bio }}</textarea>
 						</div>
 						<div class="form-group">
 							<button class="btn btn-success w-100" type="submit">Update</button>
@@ -52,18 +52,23 @@
 
 			<div class="card">
 				<div class="card-header">Your Information</div>
-				<div class="card-body">
-					<p>Name: {{ Auth::user()->name }}</p>
-					<p>Email: {{ Auth::user()->email }}</p>
-				</div>
+					<div class="card-body">
+						<p>Name: {{ Auth::user()->name }}</p>
+						<p>Email: {{ Auth::user()->email }}</p>
+						<p>Address: {{ Auth::user()->profile->address }}</p>
+						<p>Gender: {{ Auth::user()->profile->gender }}</p>
+						<p>Member since: {{ Auth::user()->created_at->format('d-m-Y') }}</p>
+					</div>
 			</div>
 
 			<div class="card mt-2">
 				<div class="card-header">Update Coverletter</div>
-				<div class="card-body">
-					<input type="file" name="cover_letter" class="form-control">
-					<button class="btn btn-success w-100 mt-2" type="submit">Update</button>
-				</div>
+				<form action="{{ route('cover.letter') }}" method="post" enctype="multipart/form-data">
+					<div class="card-body">
+						<input type="file" name="cover_letter" class="form-control">
+						<button class="btn btn-success w-100 mt-2" type="submit">Update</button>
+					</div>
+				</form>
 			</div>
 
 			<div class="card mt-2">
