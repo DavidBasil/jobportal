@@ -13,26 +13,37 @@
 		<div class="col-md-6">
 			<div class="card">
 				<div class="card-header">Update You Profile</div>
-				<div class="card-body">
 
-					{{-- form --}}
-					<div class="form-group">
-						<label for="address">Address</label>
-						<input type="text" name="address" class="form-control">
-					</div>
-					<div class="form-group">
-						<label for="experience">Experience</label>
-						<textarea name="experience" class="form-control"></textarea>
-					</div>
-					<div class="form-group">
-						<label for="bio">Bio</label>
-						<textarea name="bio" class="form-control"></textarea>
-					</div>
-					<div class="form-group">
-						<button class="btn btn-success w-100" type="submit">Update</button>
-					</div>
+				{{-- form --}}
+				<form action="{{ route('profile.create') }}" method="post">@csrf
+					<div class="card-body">
+	
+						<div class="form-group">
+							<label for="address">Address</label>
+							<input type="text" name="address" class="form-control">
+						</div>
+						<div class="form-group">
+							<label for="experience">Experience</label>
+							<textarea name="experience" class="form-control"></textarea>
+						</div>
+						<div class="form-group">
+							<label for="bio">Bio</label>
+							<textarea name="bio" class="form-control"></textarea>
+						</div>
+						<div class="form-group">
+							<button class="btn btn-success w-100" type="submit">Update</button>
+						</div>
 
-				</div>
+					{{-- session message --}}
+					@if(Session::has('message'))
+						<div class="alert alert-success w-100 text-center">
+							{{ Session::get('message') }}
+						</div>
+					@endif
+
+					</div>
+				</form>
+
 			</div>
 		</div>
 
@@ -41,7 +52,10 @@
 
 			<div class="card">
 				<div class="card-header">Your Information</div>
-				<div class="card-body">User Details</div>
+				<div class="card-body">
+					<p>Name: {{ Auth::user()->name }}</p>
+					<p>Email: {{ Auth::user()->email }}</p>
+				</div>
 			</div>
 
 			<div class="card mt-2">
