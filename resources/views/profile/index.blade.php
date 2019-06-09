@@ -35,9 +35,9 @@
 						</div>
 
 					{{-- session message --}}
-					@if(Session::has('message'))
+					@if(Session::has('profile_message'))
 						<div class="alert alert-success w-100 text-center">
-							{{ Session::get('message') }}
+							{{ Session::get('profile_message') }}
 						</div>
 					@endif
 
@@ -64,9 +64,16 @@
 			<div class="card mt-2">
 				<div class="card-header">Update Coverletter</div>
 				<form action="{{ route('cover.letter') }}" method="post" enctype="multipart/form-data">
+					@csrf
 					<div class="card-body">
 						<input type="file" name="cover_letter" class="form-control">
 						<button class="btn btn-success w-100 mt-2" type="submit">Update</button>
+						{{-- message --}}
+						@if(Session::has('cover_letter_message'))
+							<div class="{{ Session::get('class') }} mt-2">
+								{{ Session::get('cover_letter_message') }}
+							</div>
+						@endif
 					</div>
 				</form>
 			</div>
