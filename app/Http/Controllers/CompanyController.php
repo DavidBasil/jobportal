@@ -8,8 +8,8 @@ use App\Company;
 class CompanyController extends Controller
 {
 
-	public function show($id, Company $name){
-		return view('company.show', compact('name'));
+	public function show($id, Company $company){
+		return view('company.show', compact('company'));
 	}
 
 }
