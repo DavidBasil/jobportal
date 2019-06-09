@@ -7,6 +7,18 @@
 		{{-- left column --}}	
 		<div class="col-md-2">
 			<img src="{{ asset('avatar/logo.jpg') }}" alt="" class="w-100">
+			{{-- avatar form --}}
+			<form action="{{ route('avatar') }}" method="post" enctype="multipart/form-data">
+				@csrf
+				<div class="card">
+					<div class="card-header">
+						<div class="card-body">
+							<input type="file" name="avatar" class="form-control">
+							<button class="btn btn-success" type="submit">Update</button>
+						</div>
+					</div>
+				</div>
+			</form>
 		</div>
 
 		{{-- center column --}}	
