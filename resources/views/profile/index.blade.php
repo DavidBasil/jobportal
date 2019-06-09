@@ -58,6 +58,11 @@
 						<p>Address: {{ Auth::user()->profile->address }}</p>
 						<p>Gender: {{ Auth::user()->profile->gender }}</p>
 						<p>Member since: {{ Auth::user()->created_at->format('d-m-Y') }}</p>
+						@if(!empty(Auth::user()->profile->cover_letter))
+							<p><a href="{{ Storage::url(Auth::user()->profile->cover_letter) }}">Cover letter</a></p>
+						@else 
+							<p>Please upload cover letter</p>
+						@endif
 					</div>
 			</div>
 
