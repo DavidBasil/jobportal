@@ -19,8 +19,12 @@
 						<div class="card-body">
 							<input type="file" name="avatar" class="form-control">
 							<button class="btn btn-success mt-2 w-100" type="submit">Update</button>
-							@if(Session::has('avatar_message'))
-								<div class="{{ Session::get('class') }}">
+							@if($errors->has('avatar'))
+								<div class="alert alert-danger mt-2">
+									{{ $errors->first('avatar') }}
+								</div>
+						@elseif(Session::has('avatar_message'))
+								<div class="alert alert-success">
 									{{ Session::get('avatar_message') }}
 								</div>
 							@endif
@@ -127,8 +131,12 @@
 						<input type="file" name="cover_letter" class="form-control">
 						<button class="btn btn-success w-100 mt-2" type="submit">Update</button>
 						{{-- message --}}
-						@if(Session::has('cover_letter_message'))
-							<div class="{{ Session::get('class') }} mt-2">
+						@if($errors->has('cover_letter'))
+							<div class="alert alert-danger mt-2">
+								{{ $errors->first('cover_letter') }}
+							</div>
+						@elseif(Session::has('cover_letter_message'))
+							<div class="alert alert-success">
 								{{ Session::get('cover_letter_message') }}
 							</div>
 						@endif
@@ -143,8 +151,12 @@
 						<input type="file" name="resume" class="form-control">
 						<button class="btn btn-success w-100 mt-2" type="submit">Update</button>
 						{{-- message --}}
-						@if(Session::has('resume_message'))
-							<div class="{{ Session::get('class') }} mt-2">
+						@if($errors->has('resume'))
+							<div class="alert alert-danger mt-2">
+								{{ $errors->first('resume') }}
+							</div>
+						@elseif(Session::has('resume_message'))
+							<div class="alert alert-success">
 								{{ Session::get('resume_message') }}
 							</div>
 						@endif
