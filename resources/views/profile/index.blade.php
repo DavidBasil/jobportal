@@ -38,23 +38,43 @@
 				{{-- form --}}
 				<form action="{{ route('profile.create') }}" method="post">@csrf
 					<div class="card-body">
-
+						{{-- address input --}}
 						<div class="form-group">
-							<label for="address">Address</label>
+							@if($errors->has('address'))
+								<p class="text-danger">{{ $errors->first('address') }}</p>
+							@else
+								<label for="address">Address</label>
+							@endif
 							<input type="text" name="address" class="form-control" value="{{ Auth::user()->profile->address }}">
 						</div>
+						{{-- phone number input --}}
 						<div class="form-group">
+							@if($errors->has('phone_number'))
+							<p class="text-danger">{{ $errors->first('phone_number') }}</p>
+							@else
 							<label for="phone_number">Phone Number</label>
+							@endif
 							<input type="text" name="phone_number" class="form-control" value="{{ Auth::user()->profile->phone_number }}">
 						</div>
+						{{-- experience input --}}
 						<div class="form-group">
+							@if($errors->has('experience'))
+							<p class="text-danger">{{ $errors->first('experience') }}</p>
+							@else
 							<label for="experience">Experience</label>
+							@endif
 							<textarea name="experience" class="form-control">{{ Auth::user()->profile->experience }}</textarea>
 						</div>
+						{{-- bio input --}}
 						<div class="form-group">
+							@if($errors->has('bio'))
+							<p class="text-danger">{{ $errors->first('bio') }}</p>
+							@else
 							<label for="bio">Bio</label>
+							@endif
 							<textarea name="bio" class="form-control">{{ Auth::user()->profile->bio }}</textarea>
 						</div>
+						{{-- submit --}}	
 						<div class="form-group">
 							<button class="btn btn-success w-100" type="submit">Update</button>
 						</div>
@@ -81,6 +101,7 @@
 					<p>Name: {{ Auth::user()->name }}</p>
 					<p>Email: {{ Auth::user()->email }}</p>
 					<p>Address: {{ Auth::user()->profile->address }}</p>
+					<p>Phone: {{ Auth::user()->profile->phone_number }}</p>
 					<p>Gender: {{ Auth::user()->profile->gender }}</p>
 					<p>Member since: {{ Auth::user()->created_at->format('d-m-Y') }}</p>
 					{{-- cover letter link --}}
