@@ -65,4 +65,25 @@ class UserController extends Controller
 		}
 	}
 
+	public function avatar(Request $request){
+		$user_id = auth()->user()->id;
+		if($request->hasFile('avatar')){
+			$file = $request->file('avatar');
+			$ext = $file->getClientOriginalExtension();
+			$filename = time().'.'.$ext;
+			$file->move('uploads/avatar/', $filename);
+			Profile::where('user_id', $user_id)->update([
+				'avatar' => $filename
+			]);
+			return redirect()->back()
+				->with('avatar_message', 'Avagar Updated')
+				->with('class', 'alert alert-success');
+		} else {
+			return redirect()->back()
+				->with('avatar_message', 'Choose a file')
+				->with('class', 'alert alert-danger');
+		}
+	}
+	
+
 }

@@ -5,8 +5,12 @@
 	<div class="row">
 
 		{{-- left column --}}	
-		<div class="col-md-2">
-			<img src="{{ asset('avatar/logo.jpg') }}" alt="" class="w-100">
+		<div class="col-md-3">
+			@if(empty(Auth::user()->profile->avatar))
+				<img src="{{ asset('avatar/logo.jpg') }}" alt="" class="w-100">
+			@else
+				<img src="{{ asset('uploads/avatar') }}/{{ Auth::user()->profile->avatar }}" alt="" class="w-100">
+			@endif
 			{{-- avatar form --}}
 			<form action="{{ route('avatar') }}" method="post" enctype="multipart/form-data">
 				@csrf
@@ -14,7 +18,12 @@
 					<div class="card-header">
 						<div class="card-body">
 							<input type="file" name="avatar" class="form-control">
-							<button class="btn btn-success" type="submit">Update</button>
+							<button class="btn btn-success mt-2 w-100" type="submit">Update</button>
+							@if(Session::has('avatar_message'))
+								<div class="{{ Session::get('class') }}">
+									{{ Session::get('avatar_message') }}
+								</div>
+							@endif
 						</div>
 					</div>
 				</div>
@@ -22,7 +31,7 @@
 		</div>
 
 		{{-- center column --}}	
-		<div class="col-md-6">
+		<div class="col-md-5">
 			<div class="card">
 				<div class="card-header">Update You Profile</div>
 
