@@ -16,6 +16,7 @@ class UserController extends Controller
 		$user_id = auth()->user()->id;
 		Profile::where('user_id', $user_id)->update([
 			'address' => request('address'),
+			'phone_number' => request('phone_number'),
 			'experience' => request('experience'),
 			'bio' => request('bio')
 		]);
