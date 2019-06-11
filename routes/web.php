@@ -30,3 +30,4 @@ Route::post('user/avatar', 'UserController@avatar')->name('avatar');
 
 // employer routes
 Route::view('employer/register', 'auth.employer-register');
+Route::post('employer/register', 'EmployerController@register')->name('employer.register');
