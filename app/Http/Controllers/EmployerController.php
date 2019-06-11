@@ -12,15 +12,15 @@ class EmployerController extends Controller
 	public function register()
 	{
 		$user = User::create([
-				'email' => $data['email'],
-				'password' => Hash::make('password'),
+				'email' => request('email'),
+				'password' => Hash::make(request('password')),
 				'user_type' => request('user_type')
 		]);
 
 		Company::create([
 			'user_id' => $user->id,
 			'cname' => request('cname'),
-			'slug' => str_slug(requrest('cname'))
+			'slug' => str_slug(request('cname'))
 		]);
 
 		return redirect()->to('login');
