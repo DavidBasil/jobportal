@@ -34,27 +34,32 @@
 						{{-- address input --}}
 						<div class="form-group">
 							<label for="address">Address</label>
-							<input type="text" name="address" class="form-control">
+							<input type="text" name="address" class="form-control"
+								value="{{ Auth::user()->company->address }}">
 						</div>
 						{{-- phone --}}
 						<div class="form-group">
 							<label for="phone">Phone</label>
-							<input type="text" name="phone" class="form-control">
+							<input type="text" name="phone" class="form-control"
+								value="{{ Auth::user()->company->phone }}">
 						</div>
 						{{-- website --}}
 						<div class="form-group">
 							<label for="website">Website</label>
-							<input type="text" name="website" class="form-control">
+							<input type="text" name="website" class="form-control"
+								value="{{ Auth::user()->company->website }}">
 						</div>
 						{{-- slogan --}}
 						<div class="form-group">
 							<label for="slogan">Slogan</label>
-							<input type="text" name="slogan" class="form-control">
+							<input type="text" name="slogan" class="form-control"
+								value="{{ Auth::user()->company->slogan }}">
 						</div>
 						{{-- description --}}
 						<div class="form-group">
 							<label for="description">Description</label>
 							<textarea name="description" rows="8" cols="40" class="form-control">
+								{{ Auth::user()->company->description }}
 							</textarea>
 						</div>
 
