@@ -81,7 +81,13 @@
 
 			<div class="card">
 				<div class="card-header">About the company</div>
-				<div class="card-body">Company name: <strong>{{ Auth::user()->company->cname }}</strong></div>
+				<div class="card-body">
+					<p>Name: <strong>{{ Auth::user()->company->cname }}</strong></p>
+					<p>Address: <strong>{{ Auth::user()->company->address }}</strong></p>
+					<p>Phone: <strong>{{ Auth::user()->company->phone }}</strong></p>
+					<p>Website: <strong>{{ Auth::user()->company->website }}</strong></p>
+					<p>Slogan: <strong>{{ Auth::user()->company->slogan }}</strong></p>
+				</div>
 			</div>
 
 			<div class="card mt-2">
