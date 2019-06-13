@@ -52,4 +52,26 @@ class CompanyController extends Controller
 		}
 	}
 
+	public function logo(Request $request)
+	{
+		$user_id = auth()->user()->id;
+
+		if($request->hasFile('logo')){
+			$file = $request->file('logo');
+
+			$ext = $file->getClientOriginalExtension();
+
+			$filename = time().'.'.$ext;
+
+			$file->move('uploads/logo/', $filename);
+
+			Company::where('user_id', $user_id)->update([
+				'logo' => $filename
+			]);
+
+			return redirect()->back()->with('message', 'Logo updated');
+		}
+		
+	}
+
 }

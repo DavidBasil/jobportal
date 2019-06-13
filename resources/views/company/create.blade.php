@@ -11,12 +11,12 @@
 			@else
 				<img src="{{ asset('uploads/avatar') }}/{{ Auth::user()->profile->avatar }}" alt="" class="w-100">
 			@endif
-			{{-- avatar form --}}
-			<form action="{{ route('avatar') }}" method="post" enctype="multipart/form-data">
+			{{-- logo form --}}
+			<form action="{{ route('company.logo') }}" method="post" enctype="multipart/form-data">
 				@csrf
 				<div class="card">
 					<div class="card-body">
-						<input type="file" name="avatar" class="form-control">
+						<input type="file" name="logo" class="form-control">
 						<button class="btn btn-success mt-2 w-100" type="submit">Update</button>
 					</div>
 				</div>

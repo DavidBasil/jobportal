@@ -31,6 +31,7 @@ Route::get('company/{id}/{company}', 'CompanyController@show')->name('company.sh
 Route::get('company/create', 'CompanyController@create')->name('company.view');
 Route::post('company/create', 'CompanyController@store')->name('company.store');
 Route::post('company/coverphoto', 'CompanyController@coverPhoto')->name('cover.photo');
+Route::post('company/logo', 'CompanyController@logo')->name('company.logo');
 // employer routes
 Route::view('employer/register', 'auth.employer-register');
 Route::post('employer/register', 'EmployerController@register')->name('employer.register');
