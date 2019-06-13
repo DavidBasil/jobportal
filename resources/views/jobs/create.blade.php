@@ -10,6 +10,8 @@
 				</div>
 				<div class="card-body">
 
+					<form action="{{ route('job.create') }}" method="post">
+					@csrf
 					{{-- title --}}
 					<div class="form-group">
 						<label for="title">Title</label>
@@ -80,6 +82,7 @@
 						<button type="submit" class="btn btn-primary btn-lg w-100">Submit</button>
 					</div>
 
+					</form>
 				</div>
 			</div>
 		</div>
