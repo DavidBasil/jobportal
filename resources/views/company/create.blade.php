@@ -29,7 +29,7 @@
 				<div class="card-header">Update Your Company</div>
 
 				{{-- form --}}
-				<form action="{{ route('profile.create') }}" method="post">@csrf
+				<form action="{{ route('company.store') }}" method="post">@csrf
 					<div class="card-body">
 						{{-- address input --}}
 						<div class="form-group">
@@ -64,9 +64,9 @@
 						</div>
 
 						{{-- session message --}}
-						@if(Session::has('profile_message'))
+						@if(Session::has('message'))
 							<div class="alert alert-success w-100 text-center">
-								{{ Session::get('profile_message') }}
+								{{ Session::get('message') }}
 							</div>
 						@endif
 
