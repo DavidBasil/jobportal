@@ -28,6 +28,11 @@ Route::post('user/coverletter', 'UserController@coverletter')->name('cover.lette
 Route::post('user/resume', 'UserController@resume')->name('resume');
 Route::post('user/avatar', 'UserController@avatar')->name('avatar');
 
+// company
+Route::get('company/{id}/{company}', 'CompanyController@show')->name('company.show');
+Route::get('company/create', 'CompanyController@create')->name('company.create');
+Route::post('company/create', 'CompanyController@store')->name('company.store');
+
 // employer routes
 Route::view('employer/register', 'auth.employer-register');
 Route::post('employer/register', 'EmployerController@register')->name('employer.register');
