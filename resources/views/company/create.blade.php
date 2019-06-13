@@ -6,10 +6,11 @@
 
 		{{-- left column --}}	
 		<div class="col-md-3">
-			@if(empty(Auth::user()->profile->avatar))
-				<img src="{{ asset('avatar/logo.jpg') }}" alt="" class="w-100">
+			@if(!empty(Auth::user()->company->logo))
+				<img src="{{ asset('uploads/logo') }}/{{ Auth::user()->company->logo }}" alt="" class="w-100">
 			@else
-				<img src="{{ asset('uploads/avatar') }}/{{ Auth::user()->profile->avatar }}" alt="" class="w-100">
+				<img src="{{ asset('avatar/logo.jpg') }}" alt="" class="w-100">
+				{{-- <img src="{{ asset('uploads/avatar') }}/{{ Auth::user()->profile->avatar }}" alt="" class="w-100"> --}}
 			@endif
 			{{-- logo form --}}
 			<form action="{{ route('company.logo') }}" method="post" enctype="multipart/form-data">
