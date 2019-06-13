@@ -6,7 +6,11 @@
 
 		{{-- company profile --}}
 		<div class="company-profile">
+			@if(!empty(Auth::user()->company->cover_photo))
+			<img src="{{ asset('uploads/coverphoto') }}/{{Auth::user()->company->cover_photo}}" alt="">
+		@else
 			<img src="{{ asset('cover/cover.jpg') }}" alt="" class="w-100">
+			@endif
 			<div class="company-desc mt-4">
 				<div class="row">
 					<div class="col-md-4">
