@@ -14,7 +14,11 @@
 			<div class="company-desc mt-4">
 				<div class="row">
 					<div class="col-md-4">
-						<img src="{{ asset('avatar/logo.jpeg') }}" alt="" class="w-100">
+			@if(!empty(Auth::user()->company->logo))
+				<img src="{{ asset('uploads/logo') }}/{{ Auth::user()->company->logo }}" alt="" class="w-100">
+			@else
+				<img src="{{ asset('avatar/logo.jpg') }}" alt="" class="w-100">
+			@endif
 					</div>
 					<div class="col-md-8">
 						<h3>{{ $company->cname }}</h3>
