@@ -20,19 +20,16 @@ Route::get('/', 'JobController@index');
 Route::get('/jobs/{id}/{job}', 'JobController@show')->name('jobs.show');
 
 Route::get('/company/{id}/{company}', 'CompanyController@show')->name('company.show');
-
-Route::get('user/profile', 'UserController@index');
 // user routes
+Route::get('user/profile', 'UserController@index');
 Route::post('user/profile/create', 'UserController@store')->name('profile.create');
 Route::post('user/coverletter', 'UserController@coverletter')->name('cover.letter');
 Route::post('user/resume', 'UserController@resume')->name('resume');
 Route::post('user/avatar', 'UserController@avatar')->name('avatar');
-
 // company
 Route::get('company/{id}/{company}', 'CompanyController@show')->name('company.show');
-Route::get('company/create', 'CompanyController@create')->name('company.create');
+Route::get('company/create', 'CompanyController@create')->name('company.view');
 Route::post('company/create', 'CompanyController@store')->name('company.store');
-
 // employer routes
 Route::view('employer/register', 'auth.employer-register');
 Route::post('employer/register', 'EmployerController@register')->name('employer.register');
