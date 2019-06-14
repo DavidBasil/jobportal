@@ -26,7 +26,7 @@
 						<td><i class="fa fa-globe"></i> Date: {{ $job->created_at->diffForHumans() }}</td>
 						<td>
 							{{-- link to each individual job --}}
-							<a href="{{ route('jobs.show', [$job->id, $job->slug]) }}">
+							<a href="{{ route('job.show', [$job->id, $job->slug]) }}">
 								<button class="btn btn-success btn-sm">Apply</button></td>
 							</a>
 					</tr>

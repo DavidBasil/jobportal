@@ -52,4 +52,9 @@ class JobController extends Controller
 		return redirect()->back()->with('message', 'Job Posted!');
 	}
 
+	public function myjob(){
+		$jobs = Job::where('user_id', auth()->user()->id->get());
+		return view('jobs.myjob', compact('jobs'));
+	}
+
 }

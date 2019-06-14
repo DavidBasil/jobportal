@@ -56,7 +56,7 @@
 					@else
 						<li>
 							<a href="{{ route('job.create') }}">
-								<button class="btn btn-secondary">Post a Job</button>
+								<button class="btn btn-primary">Post a Job</button>
 							</a>
 						</li>
 						<li class="nav-item dropdown">
