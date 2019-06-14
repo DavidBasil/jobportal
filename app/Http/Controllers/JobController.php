@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Job;
 use App\Company;
+use App\Http\Requests\JobPostRequest;
 
 class JobController extends Controller
 {
@@ -25,7 +26,7 @@ class JobController extends Controller
 		return view('jobs.create');
 	}
 
-	public function store(Request $request)
+	public function store(JobPostRequest $request)
 	{
 		$user_id = auth()->user()->id;
 

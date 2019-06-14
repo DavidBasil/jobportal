@@ -19,20 +19,42 @@
 					@csrf
 					{{-- title --}}
 					<div class="form-group">
-						<label for="title">Title</label>
-						<input type="text" name="title" class="form-control">
+						@if($errors->has('title'))
+							<span class="text-danger">
+								<strong>{{ $errors->first('title') }}</strong>
+							</span>
+						@else
+							<label for="title">Title</label>
+						@endif
+						<input type="text" name="title" class="form-control" value="{{ old('title') }}">
 					</div>
 
 					{{-- description --}}	
 					<div class="form-group">
+						@if($errors->has('description'))
+							<div class="text-danger">
+								<strong>{{ $errors->first('description') }}</strong>
+							</div>
+						@else
 						<label for="title">Description</label>
-						<textarea name="description" rows="6" cols="40" class="form-control"></textarea>
+						@endif
+						<textarea name="description" rows="6" cols="40" class="form-control">
+							{{ old('description') }}
+						</textarea>
 					</div>
 
 					{{-- roles --}}
 					<div class="form-group">
+						@if($errors->has('roles'))
+							<div class="text-danger">
+								<strong>{{ $errors->first('roles') }}</strong>
+							</div>
+						@else
 						<label for="roles">Roles</label>
-						<textarea name="roles" rows="6" cols="40" class="form-control"></textarea>
+						@endif
+						<textarea name="roles" rows="6" cols="40" class="form-control">
+							{{ old('roles') }}
+						</textarea>
 					</div>
 
 					{{-- category --}}
@@ -47,14 +69,26 @@
 
 					{{-- position --}}
 					<div class="form-group">
+						@if($errors->has('position'))
+							<div class="text-danger">
+								<strong>{{ $errors->first('position') }}</strong>
+							</div>
+						@else
 						<label for="position">Position</label>
-						<input type="text" name="position" class="form-control">
+						@endif
+						<input type="text" name="position" class="form-control" value="{{ old('position') }}">
 					</div>
 
 					{{-- address --}}
 					<div class="form-group">
+						@if($errors->has('address'))
+							<div class="text-danger">
+								<strong>{{ $errors->first('address') }}</strong>
+							</div>
+						@else
 						<label for="address">Address</label>
-						<input type="text" name="address" class="form-control">
+						@endif
+						<input type="text" name="address" class="form-control" value="{{ old('address') }}">
 					</div>
 
 					{{-- type --}}
@@ -78,8 +112,14 @@
 
 					{{-- last date --}}
 					<div class="form-group">
-						<label for="last_date">Last date</label>
-						<input type="date" name="last_date" class="form-control">
+						@if($errors->has('last_date'))
+							<div class="text-danger">
+								<strong>{{ $errors->first('last_date') }}</strong>
+							</div>
+						@else
+						<label for="last_date">Last Date</label>
+						@endif
+						<input type="date" name="last_date" class="form-control" value="{{ old('last_date') }}">
 					</div>
 
 					{{-- submit --}}
