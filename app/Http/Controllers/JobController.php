@@ -53,7 +53,7 @@ class JobController extends Controller
 	}
 
 	public function myjob(){
-		$jobs = Job::where('user_id', auth()->user()->id->get());
+		$jobs = Job::where('user_id', auth()->user()->id)->get();
 		return view('jobs.myjob', compact('jobs'));
 	}
 

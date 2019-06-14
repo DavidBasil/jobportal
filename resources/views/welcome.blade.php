@@ -17,13 +17,19 @@
 					{{-- jobs loop --}}
 					@foreach($jobs as $job)
 					<tr>
-						<td><img src="{{ asset('avatar/logo.jpeg') }}" width="80"></td>
+			@if(!empty(Auth::user()->company->logo))
+				<td><img src="{{ asset('uploads/logo') }}/{{ Auth::user()->company->logo }}" alt="" class="w-100"></td>
+			@else
+				<td><img src="{{ asset('avatar/logo.jpg') }}" alt="" class="w-100"></td>
+			@endif
 						<td><span class="text-primary">Position:</span> {{ $job->position }}
 							<br>
 							<i class="fa fa-clock"></i> {{ $job->type }}
 						</td>
-						<td><i class="fa fa-map-marker"></i> Address: {{ $job->address }}</td>
-						<td><i class="fa fa-globe"></i> Date: {{ $job->created_at->diffForHumans() }}</td>
+						<td><i class="fa fa-map-marker"></i> 
+							Address: {{ $job->address }}</td>
+						<td><i class="fa fa-globe"></i> 
+							Date: {{ $job->created_at->diffForHumans() }}</td>
 						<td>
 							{{-- link to each individual job --}}
 							<a href="{{ route('job.show', [$job->id, $job->slug]) }}">
