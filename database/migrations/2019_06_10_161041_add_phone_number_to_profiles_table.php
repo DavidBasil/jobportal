@@ -14,7 +14,7 @@ class AddPhoneNumberToProfilesTable extends Migration
     public function up()
     {
         Schema::table('profiles', function (Blueprint $table) {
-					$table->string('phone_number')->nullable()->after('addres');
+					$table->string('phone_number')->nullable()->after('address');
         });
     }
 

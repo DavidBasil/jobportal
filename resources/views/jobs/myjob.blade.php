@@ -43,7 +43,7 @@
 									</a>
 								</td>
 								<td>
-									<a href="http://www.url.com">
+									<a href="{{ route('job.edit', [$job->id]) }}">
 										<button class="btn btn-dark btn-sm">Edit</button>
 									</a>
 								</td>

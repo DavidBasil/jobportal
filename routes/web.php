@@ -13,14 +13,16 @@
 
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/', 'JobController@index');
+Route::get('/home', 'HomeController@index')->name('home');
 
 // jobs routes
 Route::get('/job/create', 'JobController@create')->name('job.create');
 Route::post('/job/create', 'JobController@store')->name('job.store');
 // {job} is for a slug
-Route::get('/jobs/{id}/{job}', 'JobController@show')->name('job.show');
+Route::get('/job/{id}/edit', 'JobController@edit')->name('job.edit');
+Route::post('/job/{id}/edit', 'JobController@update')->name('job.update');
+Route::get('/job/{id}/{job}', 'JobController@show')->name('job.show');
 Route::get('job/my-job', 'JobController@myjob')->name('job.myjob');
 
 /* Route::get('/company/{id}/{company}', 'CompanyController@show')->name('company.show'); */

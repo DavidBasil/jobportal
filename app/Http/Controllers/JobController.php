@@ -52,6 +52,17 @@ class JobController extends Controller
 		return redirect()->back()->with('message', 'Job Posted!');
 	}
 
+	public function edit($id){
+		$job = Job::findOrFail($id);
+		return view('jobs.edit', compact('job'));
+	}
+
+	public function update(Request $request, $id){
+		$job = Job::findOrFail($id);
+		$job->update($request->all());
+		return redirect()->back()->with('message', 'Job Updated');
+	}
+
 	public function myjob(){
 		$jobs = Job::where('user_id', auth()->user()->id)->get();
 		return view('jobs.myjob', compact('jobs'));
