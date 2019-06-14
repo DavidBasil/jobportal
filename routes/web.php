@@ -17,7 +17,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // jobs routes
 Route::get('/job/create', 'JobController@create');
-Route::post('/job/create', 'JobController@store')->name('job.create');
+Route::post('/job/create', 'JobController@store')->name('job.store');
 // {job} is for a slug
 /* Route::get('/jobs/{id}/{job}', 'JobController@show')->name('jobs.show'); */
 

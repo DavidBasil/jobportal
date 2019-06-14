@@ -5,12 +5,17 @@
 	<div class="row justify-content-center">
 		<div class="col-md-8">
 			<div class="card">
+				@if(Session::has('message'))
+					<div class="alert alert-success text-center text-uppercase">
+						{{ Session::get('message') }}
+					</div>
+				@endif
 				<div class="card-header text-center bg-primary text-white text-uppercase">
 					Create a new Job
 				</div>
 				<div class="card-body">
 
-					<form action="{{ route('job.create') }}" method="post">
+					<form action="{{ route('job.store') }}" method="post">
 					@csrf
 					{{-- title --}}
 					<div class="form-group">

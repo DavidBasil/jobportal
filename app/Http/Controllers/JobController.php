@@ -28,12 +28,15 @@ class JobController extends Controller
 	public function store(Request $request)
 	{
 		$user_id = auth()->user()->id;
+
 		$company = Company::where('user_id', $user_id)->first();
+
 		$company_id = $company->id;
+
 		Job::create([
 			'user_id' => $user_id,
 			'company_id' => $company_id,
-			'title' => request('tile'),
+			'title' => request('title'),
 			'slug' => str_slug(request('title')),
 			'description' => request('description'),
 			'roles' => request('roles'),
@@ -44,6 +47,8 @@ class JobController extends Controller
 			'status' => request('status'),
 			'last_date' => request('last_date')
 		]);
+
+		return redirect()->back()->with('message', 'Job Posted!');
 	}
 
 }
