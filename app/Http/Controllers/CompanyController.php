@@ -7,71 +7,75 @@ use App\Company;
 
 class CompanyController extends Controller
 {
-	public function show($id, Company $company){
-		return view('company.show', compact('company'));
-	}
+    public function __construct(){
+        $this->middleware('employer', ['except' => ['index']]);
+    }
 
-	public function create()
-	{
-		return view('company.create');
-	}
+    public function show($id, Company $company){
+        return view('company.show', compact('company'));
+    }
 
-	public function store(Request $request)
-	{
-		$user_id = auth()->user()->id;
+    public function create()
+    {
+        return view('company.create');
+    }
 
-		Company::where('user_id', $user_id)->update([
-			'address' => request('address'),
-			'phone' => request('phone'),
-			'website' => request('website'),
-			'slogan' => request('slogan'),
-			'description' => request('description')
-		]);
+    public function store(Request $request)
+    {
+        $user_id = auth()->user()->id;
 
-		return redirect()->back()->with('message', 'Company Updated!');
-	}
+        Company::where('user_id', $user_id)->update([
+            'address' => request('address'),
+            'phone' => request('phone'),
+            'website' => request('website'),
+            'slogan' => request('slogan'),
+            'description' => request('description')
+        ]);
 
-	public function coverPhoto(Request $request)
-	{
-		$user_id = auth()->user()->id;
+        return redirect()->back()->with('message', 'Company Updated!');
+    }
 
-		if($request->hasFile('cover_photo')){
-			$file = $request->file('cover_photo');
+    public function coverPhoto(Request $request)
+    {
+        $user_id = auth()->user()->id;
 
-			$ext = $file->getClientOriginalExtension();
+        if($request->hasFile('cover_photo')){
+            $file = $request->file('cover_photo');
 
-			$filename = time().'.'.$ext;
+            $ext = $file->getClientOriginalExtension();
 
-			$file->move('uploads/coverphoto/', $filename);
+            $filename = time().'.'.$ext;
 
-			Company::where('user_id', $user_id)->update([
-				'cover_photo' => $filename
-			]);
+            $file->move('uploads/coverphoto/', $filename);
 
-			return redirect()->back()->with('message', 'Cover photo updated');
-		}
-	}
+            Company::where('user_id', $user_id)->update([
+                'cover_photo' => $filename
+            ]);
 
-	public function logo(Request $request)
-	{
-		$user_id = auth()->user()->id;
+            return redirect()->back()->with('message', 'Cover photo updated');
+        }
+    }
 
-		if($request->hasFile('logo')){
-			$file = $request->file('logo');
+    public function logo(Request $request)
+    {
+        $user_id = auth()->user()->id;
 
-			$ext = $file->getClientOriginalExtension();
+        if($request->hasFile('logo')){
+            $file = $request->file('logo');
 
-			$filename = time().'.'.$ext;
+            $ext = $file->getClientOriginalExtension();
 
-			$file->move('uploads/logo/', $filename);
+            $filename = time().'.'.$ext;
 
-			Company::where('user_id', $user_id)->update([
-				'logo' => $filename
-			]);
+            $file->move('uploads/logo/', $filename);
 
-			return redirect()->back()->with('message', 'Logo updated');
-		}
-		
-	}
+            Company::where('user_id', $user_id)->update([
+                'logo' => $filename
+            ]);
+
+            return redirect()->back()->with('message', 'Logo updated');
+        }
+
+    }
 
 }
