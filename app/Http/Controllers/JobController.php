@@ -6,11 +6,12 @@ use Illuminate\Http\Request;
 use App\Job;
 use App\Company;
 use App\Http\Requests\JobPostRequest;
+use Auth;
 
 class JobController extends Controller
 {
     public function __construct(){
-        $this->middleware('employer', ['except' => ['index', 'show']]);
+        $this->middleware('employer', ['except' => ['index', 'show', 'apply']]);
     }
 
     public function index(){
@@ -69,6 +70,12 @@ class JobController extends Controller
     public function myjob(){
         $jobs = Job::where('user_id', auth()->user()->id)->get();
         return view('jobs.myjob', compact('jobs'));
+    }
+
+    public function apply(Request $request, $id){
+        $jobId = Job::find($id);
+        $jobId->users()->attach(Auth::user()->id);
+        return redirect()->back()->with('message', 'Application Sent');
     }
 
 }

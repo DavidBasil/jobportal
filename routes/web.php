@@ -9,7 +9,7 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+ */
 
 
 Auth::routes();
@@ -41,3 +41,5 @@ Route::post('company/logo', 'CompanyController@logo')->name('company.logo');
 // employer routes
 Route::view('employer/register', 'auth.employer-register');
 Route::post('employer/register', 'EmployerController@register')->name('employer.register');
+
+Route::post('applications/{id}', 'JobController@apply')->name('apply');
