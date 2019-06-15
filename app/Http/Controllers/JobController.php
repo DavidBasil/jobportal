@@ -15,7 +15,7 @@ class JobController extends Controller
     }
 
     public function index(){
-        $jobs = Job::all()->take(10);
+        $jobs = Job::all();
         return view('welcome', compact('jobs'));
     }
 
@@ -76,6 +76,12 @@ class JobController extends Controller
         $jobId = Job::find($id);
         $jobId->users()->attach(Auth::user()->id);
         return redirect()->back()->with('message', 'Application Sent');
+    }
+
+    public function applicant(){
+        $applicants = Job::has('users')
+            ->where('user_id', auth()->user()->id)->get();
+        return view('jobs.applicants', compact('applicants'));
     }
 
 }
