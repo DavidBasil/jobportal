@@ -10,7 +10,8 @@
 						{{ Session::get('message') }}
 					</div>
 				@endif
-				<div class="card-header text-center bg-primary text-white text-uppercase">
+				<div 
+					class="card-header text-center bg-primary text-white text-uppercase">
 					Update a job
 				</div>
 				<div class="card-body">
@@ -110,9 +111,11 @@
 							<option 
 								value="fulltime"{{$job->type=='fulltime'?'selected':''}}>Full Time
 							</option>	
-							<option value="partime"{{$job->type=='partime'?'selected':''}}>Part Time
+							<option 
+								value="partime"{{$job->type=='partime'?'selected':''}}>Part Time
 							</option>	
-							<option value="casual"{{$job->type=='casual'?'selected':''}}>Casual
+							<option 
+								value="casual"{{$job->type=='casual'?'selected':''}}>Casual
 							</option>	
 						</select>
 					</div>

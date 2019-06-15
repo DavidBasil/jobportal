@@ -10,7 +10,8 @@
 						{{ Session::get('message') }}
 					</div>
 				@endif
-				<div class="card-header text-center bg-primary text-white text-uppercase">
+				<div 
+					class="card-header text-center bg-primary text-white text-uppercase">
 					Create a new Job
 				</div>
 				<div class="card-body">
@@ -26,7 +27,11 @@
 						@else
 							<label for="title">Title</label>
 						@endif
-						<input type="text" name="title" class="form-control" value="{{ old('title') }}">
+						<input 
+							type="text" 
+							name="title" 
+							class="form-control" 
+							value="{{ old('title') }}">
 					</div>
 
 					{{-- description --}}	
@@ -76,7 +81,11 @@
 						@else
 						<label for="position">Position</label>
 						@endif
-						<input type="text" name="position" class="form-control" value="{{ old('position') }}">
+						<input 
+							type="text" 
+							name="position" 
+							class="form-control" 
+							value="{{ old('position') }}">
 					</div>
 
 					{{-- address --}}
@@ -88,7 +97,11 @@
 						@else
 						<label for="address">Address</label>
 						@endif
-						<input type="text" name="address" class="form-control" value="{{ old('address') }}">
+						<input 
+							type="text" 
+							name="address" 
+							class="form-control" 
+							value="{{ old('address') }}">
 					</div>
 
 					{{-- type --}}
@@ -119,12 +132,18 @@
 						@else
 						<label for="last_date">Last Date</label>
 						@endif
-						<input type="date" name="last_date" class="form-control" value="{{ old('last_date') }}">
+						<input 
+							type="date" 
+							name="last_date" 
+							class="form-control" 
+							value="{{ old('last_date') }}">
 					</div>
 
 					{{-- submit --}}
 					<div class="form-group">
-						<button type="submit" class="btn btn-primary btn-lg w-100">Submit</button>
+						<button 
+							type="submit" 
+							class="btn btn-primary btn-lg w-100">Submit</button>
 					</div>
 
 					</form>
