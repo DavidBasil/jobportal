@@ -3,6 +3,42 @@
 @section('content')
 <div class="container">
   <div class="row">
+
+    {{-- filters --}}
+    <form action="{{ route('alljobs') }}" method="get">
+    <div class="form-inline">
+      <div class="form-group">
+        <label>Keyword</label>
+        <input type="text" name="title" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Employment Type</label>
+        <select class="form-control" name="type">
+          <option selected disabled>-select-</option>
+          <option value="fulltime">fulltime</option> 
+          <option value="parttime">parttime</option> 
+          <option value="casual">casual</option> 
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Category</label>
+        <select name="category_id" class="form-control">
+          <option selected disabled>-select-</option>
+          @foreach(App\Category::all() as $cat)
+            <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+          @endforeach
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Address</label>
+        <input type="text" name="address" class="form-control">
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-outline-sucess text-success">Search</button>
+      </div>
+    </div>
+    </form>
+
     <h2 class="mb-3">Recent Jobs</h2>
     {{-- table of jobs --}}
     <table class="table">
@@ -33,11 +69,11 @@
       </tbody>
     </table>
     <div class="mx-auto">
-    {{ $jobs->links() }}
+      {{ $jobs->appends(Illuminate\Support\Facades\Input::except('page'))->links() }}
     </div>
   </div>
 </div>
 
 
-</div>
+  </div>
 @endsection
