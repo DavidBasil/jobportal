@@ -11,7 +11,7 @@ use Auth;
 class JobController extends Controller
 {
     public function __construct(){
-        $this->middleware('employer', ['except' => ['index', 'show', 'apply']]);
+        $this->middleware('employer', ['except' => ['index', 'show', 'apply', 'alljobs']]);
     }
 
     public function index(){
@@ -83,6 +83,11 @@ class JobController extends Controller
         $applicants = Job::has('users')
             ->where('user_id', auth()->user()->id)->get();
         return view('jobs.applicants', compact('applicants'));
+    }
+
+    public function alljobs(){
+        $jobs = Job::latest()->paginate(10);
+        return view('jobs.alljobs', compact('jobs'));
     }
 
 }

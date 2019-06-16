@@ -32,29 +32,12 @@
         @endforeach
       </tbody>
     </table>
+    <div class="mx-auto">
+    {{ $jobs->links() }}
+    </div>
   </div>
-  <a href="{{ route('alljobs') }}" class="btn btn-success w-100">Browse all jobs</a>
-  <br><br>
-  <h2>Featured Companies</h2>
 </div>
 
-<div class="container-fluid">
-  <div class="row row-eq-height">
-    @foreach($companies as $company)
-    <div class="col-md-3 mt-2">
-      <div class="card h-100">
-        <img src="{{ asset('uploads/coverphoto') }}/{{$company->cover_photo}}" alt="" class="w-100">
-        <div class="card-body">
-          <h5 class="card-title">{{ $company->cname }}</h5>
-          <p class="card-text">{{ str_limit($company->description, 30) }}</p>
-        </div>
-        <div class="card-footer">
-          <a href="{{ route('company.show', [$company->id, $company->slug]) }}" class="btn btn-primary">Visit Company</a>
-        </div>
-      </div>
-    </div>
-  @endforeach
-    </div>
-  </div>
+
 </div>
 @endsection

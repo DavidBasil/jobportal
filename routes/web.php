@@ -25,6 +25,7 @@ Route::post('job/{id}/edit', 'JobController@update')->name('job.update');
 Route::get('job/{id}/{job}', 'JobController@show')->name('job.show');
 Route::get('job/my-job', 'JobController@myjob')->name('job.myjob');
 Route::get('job/applications', 'JobController@applicant')->name('applicant');
+Route::get('job/alljobs', 'JobController@alljobs')->name('alljobs');
 
 /* Route::get('/company/{id}/{company}', 'CompanyController@show')->name('company.show'); */
 // user routes
