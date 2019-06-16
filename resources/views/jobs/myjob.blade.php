@@ -21,11 +21,19 @@
                 @foreach($jobs as $job)
                   <tr>
                     @if(!empty(Auth::user()->company->logo))
-                      <td><img src="{{ asset('uploads/logo') }}/{{ Auth::user()->company->logo }}" alt="" class="w-75"></td>
+                      <td>
+                        <img 
+                          src="{{ asset('uploads/logo') }}/{{ Auth::user()->company->logo }}" 
+                          class="w-75">
+                      </td>
                     @else
-                      <td><img src="{{ asset('avatar/logo.jpg') }}" alt="" class="w-75"></td>
+                      <td>
+                        <img src="{{ asset('avatar/logo.jpg') }}" alt="" class="w-75">
+                      </td>
                     @endif
-                    <td><span class="text-primary">Position:</span> {{ $job->position }}
+                    <td>
+                      <span class="text-primary">Position:</span> 
+                      {{ $job->position }}
                       <br>
                       <i class="fa fa-clock"></i> {{ $job->type }}
                     </td>
@@ -38,7 +46,8 @@
                     </td>
                     <td>
                       {{-- link to each individual job --}}
-                      <a href="{{ route('job.show', [$job->id, $job->slug]) }}">
+                      <a 
+                        href="{{ route('job.show', [$job->id, $job->slug]) }}">
                         <button class="btn btn-success btn-sm">Show</button>
                       </a>
                     </td>

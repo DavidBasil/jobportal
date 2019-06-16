@@ -8,7 +8,7 @@ use App\Company;
 class CompanyController extends Controller
 {
     public function __construct(){
-        $this->middleware('employer', ['except' => ['index']]);
+        $this->middleware('employer', ['except' => ['index', 'show']]);
     }
 
     public function show($id, Company $company){
