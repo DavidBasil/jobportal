@@ -12,7 +12,8 @@
  */
 
 
-Auth::routes();
+Auth::routes(['verify' => true]);
+
 Route::get('/', 'JobController@index');
 Route::get('/home', 'HomeController@index')->name('home');
 
