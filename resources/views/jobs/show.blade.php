@@ -38,14 +38,7 @@
       </div>
       @if(Auth::check() && Auth::user()->user_type='seeker')
         @if(!$job->checkApplication())
-          {{-- job apply button --}}
-          <form action="{{ route('apply', [$job->id]) }}" method="post">
-            @csrf
-            <button 
-              class="btn btn-success btn-block mt-1" 
-              type="submit">Apply
-            </button>
-          </form>
+          <apply-component jobid={{ $job->id }}></apply-component>
         @else
           <button 
             class="btn btn-success btn-block mt-1" 
