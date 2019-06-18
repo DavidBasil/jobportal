@@ -46,3 +46,7 @@ Route::view('employer/register', 'auth.employer-register');
 Route::post('employer/register', 'EmployerController@register')->name('employer.register');
 
 Route::post('applications/{id}', 'JobController@apply')->name('apply');
+
+// save and unsave jobs
+Route::post('save/{id}', 'FavouriteController@save');
+Route::post('unsave/{id}', 'FavouriteController@unsave');

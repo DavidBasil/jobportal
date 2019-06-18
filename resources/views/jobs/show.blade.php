@@ -38,13 +38,16 @@
       </div>
       @if(Auth::check() && Auth::user()->user_type='seeker')
         @if(!$job->checkApplication())
-          <apply-component jobid={{ $job->id }}></apply-component>
+          <apply-component :jobid={{ $job->id }}></apply-component>
         @else
           <button 
             class="btn btn-success btn-block mt-1" 
             disabled>You already applied
           </button>
         @endif
+        <favourite-component 
+          :jobid={{ $job->id }} 
+            :favourited={{ $job->checkSaved()?'true': 'false' }}></favourite-component>
       @endif
 
       @if(Session::has('message'))
