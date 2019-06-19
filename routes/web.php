@@ -50,3 +50,6 @@ Route::post('applications/{id}', 'JobController@apply')->name('apply');
 // save and unsave jobs
 Route::post('save/{id}', 'FavouriteController@save');
 Route::post('unsave/{id}', 'FavouriteController@unsave');
+
+// search
+Route::get('jobs/search', 'JobController@search');
