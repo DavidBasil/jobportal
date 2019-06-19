@@ -1927,23 +1927,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['jobid'],
-  mounted: function mounted() {
-    console.log('Component mounted.');
-  },
+  props: ['jobid', 'favourited'],
   data: function data() {
     return {
       'show': true
     };
+  },
+  mounted: function mounted() {
+    this.show = this.jobFavourited ? true : false;
+  },
+  computed: {
+    jobFavourited: function jobFavourited() {
+      return this.favourited;
+    }
   },
   methods: {
     save: function save() {
       var _this = this;
 
       axios.post('/save/' + this.jobid).then(function (response) {
-        return _this.show = false;
+        return _this.show = true;
       })["catch"](function (error) {
         return alert('error');
       });
@@ -1952,7 +1956,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       axios.post('/unsave/' + this.jobid).then(function (response) {
-        return _this2.show = true;
+        return _this2.show = false;
       })["catch"](function (error) {
         return alert('error');
       });
@@ -37338,20 +37342,6 @@ var render = function() {
           "button",
           {
             staticClass: "btn btn-info w-100 text-white",
-            attrs: { type: "submit" },
-            on: {
-              click: function($event) {
-                $event.preventDefault()
-                return _vm.save()
-              }
-            }
-          },
-          [_vm._v("SAVE")]
-        )
-      : _c(
-          "button",
-          {
-            staticClass: "btn btn-success w-100",
             on: {
               click: function($event) {
                 $event.preventDefault()
@@ -37360,6 +37350,19 @@ var render = function() {
             }
           },
           [_vm._v("UNSAVE")]
+        )
+      : _c(
+          "button",
+          {
+            staticClass: "btn btn-success w-100",
+            on: {
+              click: function($event) {
+                $event.preventDefault()
+                return _vm.save()
+              }
+            }
+          },
+          [_vm._v("SAVE")]
         )
   ])
 }
