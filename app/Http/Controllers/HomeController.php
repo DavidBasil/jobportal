@@ -23,6 +23,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $jobs = Auth::user()->favourites;
+        return view('home', compact('jobs'));
     }
 }
