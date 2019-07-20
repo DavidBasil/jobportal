@@ -6,14 +6,15 @@
     {{-- job description and duties --}}
     <div class="col-md-8">
       <div class="card">
-        <div class="card-header">{{ $job->title }}</div>
         <div class="card-body">
-          <p>
-          <h3>Description</h3>
-          {{ $job->description }}</p>
+          <div class="card-title"><h3>{{ $job->title }}</h3></div>
           <hr>
           <p>
-          <h3>Duties</h3>
+            <h5>Description</h5>
+            {{ $job->description }}</p>
+            <hr>
+          <p>
+          <h5>Duties</h5>
           {{ $job->roles }}</p>
         </div>
       </div>
@@ -21,19 +22,20 @@
     {{-- job info details --}}
     <div class="col-md-4">
       <div class="card">
-        <div class="card-header">Short Info</div>
         <div class="card-body">
-          <p>Company: 
-            <a 
-              href="{{ route('company.show', [$job->company->id, $job->company->slug]) }}">
-              {{ $job->company->cname }}
-            </a>
-          </p>
-          <p>Address: {{ $job->address }}</p>
-          <p>Employment Type: {{ $job->type }}</p>
-          <p>Position: {{ $job->position }}</p>
-          <p>Posted on: {{ $job->created_at->diffForHumans() }}</p>
-          <p>Last date: {{ strtotime($job->last_date) }}</p>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">Company: 
+              <a 
+               href="{{ route('company.show', [$job['company_id'], $job->company]) }}">
+                {{ $job->company->cname }}
+              </a>
+            </li>
+            <li class="list-group-item">Address: {{ $job->address }}</li>
+            <li class="list-group-item">Employment Type: {{ $job->type }}</li>
+            <li class="list-group-item">Position: {{ $job->position }}</li>
+            <li class="list-group-item">Posted on: {{ $job->created_at->diffForHumans() }}</li>
+            {{-- <li class="list-group-item">Last date: {{ strtotime($job->last_date) }}</li> --}}
+          </ul>
         </div>
       </div>
       @if(Auth::check() && Auth::user()->user_type='seeker')

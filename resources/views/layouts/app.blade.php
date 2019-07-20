@@ -11,11 +11,28 @@
   <!-- Fonts -->
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css">
   <!-- Styles -->
   <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
   <link href="{{ asset('css/now-ui-kit.min.css') }}" rel="stylesheet">
+  <style type="text/css" media="screen">
+ body::-webkit-scrollbar {
+  width: 1em;
+}
+body::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  border-radius: 10px;
+  background-color: #F5F5F5;
+}
+
+body::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #555;
+}
+ 
+  </style>
   {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/solid.min.css" type="text/css"> --}}
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/fontawesome.min.css" type="text/css">
 </head>
 <body>
 <div id="app">
@@ -40,17 +57,16 @@
           <!-- Authentication Links -->
           @guest
             <li class="nav-item">
-              <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+              <a class="nav-link border-right pr-3 font-weight-bold" href="{{ route('login') }}">{{ __('Login') }}</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" 
-                 href="{{ route('employer.register') }}">{{ __('Employer Register') }}
-              </a>
+              <a class="nav-link border-right font-weight-bold pr-3" 
+                 href="{{ route('employer.register') }}">{{ __('Employer Registration') }}</a>
             </li>
             @if (Route::has('register'))
               <li class="nav-item">
-                <a class="nav-link" 
-                   href="{{ route('register') }}">{{ __('Job Seeker Register') }}
+                <a class="nav-link font-weight-bold" 
+                   href="{{ route('register') }}">{{ __('Job Seeker Registration') }}
                 </a>
               </li>
             @endif
